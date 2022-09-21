@@ -26,16 +26,17 @@ syn match mdUrl            "</[^>/]\+[/_-][^>]*>"
 syn match mdUrl            "<#[^>]*>"
 syn match mdLinkUrl        "([^)]\+)" contained
 syn match mdLink           "\[[^]]*\]([^)]\+)" contains=mdLinkUrl
+syn match mdLinkNoUrl      "\[[^]^[]*\]"
 syn match mdImg            "!\[[^]]*\]([^)]\+)" contains=mdLinkUrl
 syn match mdHeaderId       /{#[^}]\+}/ contained
-syn match mdHeader         /^.\+\n=\+\s*$/ contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader2        /^.\+\n-\+\s*$/ contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader         "^\#.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader2        "^\##.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader3        "^\###.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader4        "^\####.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader5        "^\#####.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
-syn match mdHeader6        "^\######.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
+syn match mdHeader         /^.\+\n=\+\s*$/ contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader2        /^.\+\n-\+\s*$/ contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader         "^\#.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader2        "^\##.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader3        "^\###.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader4        "^\####.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader5        "^\#####.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
+syn match mdHeader6        "^\######.*" contains=mdHeaderId,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
 syn match mdTask           "\s*\[ \]"
 syn match mdTaskDone       "\s*\[x\].*$"
 syn match mdListItem       "^\s*\(+\|-\|*\)\s"
@@ -43,7 +44,7 @@ syn match mdNumListItem    "^\s*[0-9]\+\.\s"
 syn match mdTableBorder    "^\s*|" contained
 syn match mdTableBorder    "\s|" contained
 syn match mdTableBorder    "\s|\s*$" contained
-syn match mdTableRow       "^\s*|.*|\s*$" contains=mdTableBorder,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdUrl,mdImg
+syn match mdTableRow       "^\s*|.*|\s*$" contains=mdTableBorder,mdCode,mdItalic,mdBold,mdStrike,mdLink,mdLinkNoUrl,mdUrl,mdImg
 syn match mdTableHead      "^\s*|[-: |]*|\s*$"
 syn match mdSeparator      "^===\+\s*$"
 syn match mdSeparator      "^---\+\s*$"
@@ -100,6 +101,7 @@ hi def link mdHtmlTag        Identifier
 hi def link mdUrl            Underlined
 hi def link mdLinkUrl        Underlined
 hi def link mdLink           String
+hi def link mdLinkNoUrl      String
 hi def link mdImg            String
 hi def link mdHeaderId       Keyword
 hi def link mdHeader         Identifier
